@@ -62,17 +62,17 @@ body{
     padding:2px;
     border-radius:28px;
 
-    background:linear-gradient(
-        135deg,
-        #ff0080,
-        #7928ca,
-        #00d4ff,
-        #39ff14,
-        #ff0080
-    );
+    background:conic-gradient(
+    from 0deg,
+    #ff0080,
+    #7928ca,
+    #00d4ff,
+    #39ff14,
+    #ff0080
+);
 
     background-size:300% 300%;
-    animation:borda 6s linear infinite;
+    animation:borda 8s linear infinite;
 
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
@@ -101,37 +101,22 @@ body{
 }
 
 h2{
-
     font-size:32px;
     line-height:1.25;
-
     margin:0 0 25px;
-
-    color:white;
-
-    text-shadow:
-        0 3px 10px rgba(0,0,0,.9);
+    color:#fff;
+    text-shadow:0 3px 10px rgba(0,0,0,.9);
 }
 
 @keyframes borda{
-    0%{
-        background-position:0% 50%;
+    from{
+        transform:rotate(0deg);
     }
-
-    100%{
-        background-position:300% 50%;
+    to{
+        transform:rotate(360deg);
     }
 }
-
-h2{
-    font-size:42px;
-    line-height:1.2;
-    margin-bottom:40px;
-    color:white;
-}
-
 button{
-
     width:120px;
     height:55px;
 
@@ -140,6 +125,8 @@ button{
 
     font-size:22px;
     font-weight:bold;
+
+    color:white;
 
     cursor:pointer;
 
@@ -152,10 +139,16 @@ button{
     box-shadow:0 8px 20px rgba(52,199,89,.45);
 }
 
+.sim:hover{
+    transform:scale(1.05);
+}
+
 .nao{
     background:#ff3b30;
     color:white;
     box-shadow:0 8px 20px rgba(255,59,48,.45);
+    transition:left .15s linear,
+               top .15s linear;
 }
     
 .botoes{
