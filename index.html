@@ -27,19 +27,22 @@ body{
 }
     
 .caixa{
-    position:relative;
+    position:absolute;
+    bottom:60px;
+    left:50%;
+    transform:translateX(-50%);
 
-    width:min(90%,380px);
-    padding:30px 25px;
-    border-radius:35px;
+    width:90%;
+    max-width:420px;
+
+    padding:20px;
+
     text-align:center;
-    max-width:450px;
 
-    background:rgba(0,0,0,0.25);
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
+    background:rgba(0,0,0,.25);
+    backdrop-filter:blur(12px);
 
-    overflow:unset;
+    border-radius:25px;
 }
 
 .caixa::before{
@@ -84,6 +87,23 @@ body{
 .caixa > *{
     position:relative;
     z-index:2;
+}
+
+    .conteudo{
+    position:absolute;
+    bottom:50px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:90%;
+    text-align:center;
+}
+
+h2{
+    color:white;
+    font-size:34px;
+    text-shadow:0 4px 15px rgba(0,0,0,.8);
+    margin-bottom:30px;
 }
 
 @keyframes borda{
@@ -137,13 +157,15 @@ button{
 </head>
 <body>
 
-<div class="caixa">
+<div class="conteudo">
+
     <h2>Vamos nos ver hoje? 👀</h2>
 
     <div class="botoes">
-        <button class="sim" onclick="aceitou()">Sim💖</button>
+        <button class="sim" onclick="aceitou()">Sim 💖</button>
         <button class="nao" id="nao">Não</button>
     </div>
+
 </div>
 
 <script>
