@@ -155,6 +155,9 @@ button{
     box-shadow:0 8px 20px rgba(255,59,48,.45);
     transition:left .15s linear,
                top .15s linear;
+    touch-action:none;
+    -webkit-user-select:none;
+    user-select:none;
 }
     
 .botoes{
@@ -184,17 +187,22 @@ const btn = document.getElementById("nao");
 
 let primeiraVez = true;
 
-// Desktop
+// Computador
+btn.addEventListener("mouseenter", fugir);
+
+// iPhone e Android
+btn.addEventListener("touchstart", fugir, { passive: false });
+
+// Compatibilidade
 btn.addEventListener("pointerenter", fugir);
-
-// Celular
-btn.addEventListener("pointerdown", fugir);
-
+    
 function fugir(e){
 
-    e.preventDefault();
+    if(e){
+        e.preventDefault();
+        e.stopPropagation();
+    }
 
-    // Só tira o botão da caixa uma única vez
     if(primeiraVez){
 
         const rect = btn.getBoundingClientRect();
@@ -210,11 +218,11 @@ function fugir(e){
 
     const margem = 20;
 
-    const largura = window.innerWidth - btn.offsetWidth - margem * 2;
-    const altura = window.innerHeight - btn.offsetHeight - margem * 2;
+    const maxX = window.innerWidth - btn.offsetWidth - margem;
+    const maxY = window.innerHeight - btn.offsetHeight - margem;
 
-    const x = margem + Math.random() * largura;
-    const y = margem + Math.random() * altura;
+    const x = Math.random() * (maxX - margem) + margem;
+    const y = Math.random() * (maxY - margem) + margem;
 
     btn.style.left = x + "px";
     btn.style.top = y + "px";
