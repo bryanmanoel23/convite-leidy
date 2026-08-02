@@ -54,7 +54,7 @@ body{
     box-shadow:
         0 15px 45px rgba(0,0,0,.35);
 
-    overflow:hidden;
+    overflow:visible;
 }
 
 .caixa::before{
@@ -94,7 +94,7 @@ body{
 
     border-radius:26px;
 
-    background:rgba(15,15,15,.42);
+    background:rgba(0,0,0,.22);
 
     z-index:1;
 }
@@ -182,39 +182,52 @@ button{
 <script>
 const btn = document.getElementById("nao");
 
-btn.addEventListener("pointerenter", fugir);
-btn.addEventListener("pointerdown", fugir);
+let primeiraVez = true;
 
-let ativado = false;
+// Desktop
+btn.addEventListener("pointerenter", fugir);
+
+// Celular
+btn.addEventListener("pointerdown", fugir);
 
 function fugir(e){
 
     e.preventDefault();
 
-    btn.style.position = "fixed";
-    btn.style.margin = "0";
-    btn.style.transform = "none";
-    btn.style.zIndex = "9999";
+    // Só tira o botão da caixa uma única vez
+    if(primeiraVez){
 
-    const margem = 40;
+        const rect = btn.getBoundingClientRect();
 
-    const largura = document.documentElement.clientWidth - btn.offsetWidth - margem;
-    const altura = document.documentElement.clientHeight - btn.offsetHeight - margem;
+        btn.style.position = "fixed";
+        btn.style.left = rect.left + "px";
+        btn.style.top = rect.top + "px";
+        btn.style.margin = "0";
+        btn.style.zIndex = "9999";
 
-    const x = margem + Math.random() * (largura - margem);
-    const y = margem + Math.random() * (altura - margem);
+        primeiraVez = false;
+    }
+
+    const margem = 20;
+
+    const largura = window.innerWidth - btn.offsetWidth - margem * 2;
+    const altura = window.innerHeight - btn.offsetHeight - margem * 2;
+
+    const x = margem + Math.random() * largura;
+    const y = margem + Math.random() * altura;
 
     btn.style.left = x + "px";
     btn.style.top = y + "px";
 }
 
-    function aceitou(){
-        document.querySelector("h2").innerHTML =
-            "Perfeito! ❤️ Agora é só escolher o horário.";
-        document.querySelector(".sim").style.display = "none";
-        document.querySelector(".nao").style.display = "none";
-    }
-    
+function aceitou(){
+
+    document.querySelector("h2").innerHTML =
+    "Perfeito! ❤️ Agora é só escolher o horário.";
+
+    btn.style.display = "none";
+    document.querySelector(".sim").style.display = "none";
+}
 </script>
 
 </body>
