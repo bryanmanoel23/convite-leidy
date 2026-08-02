@@ -37,10 +37,10 @@ body{
     bottom:35px;
     transform:translateX(-50%);
 
-    width:82%;
-    max-width:340px;
-
-    padding:18px 22px;
+    width:78%;
+    max-width:320px;
+    
+    padding:16px 18px;
 
     border-radius:28px;
 
@@ -66,8 +66,8 @@ body{
     padding:2px;
     border-radius:28px;
 
-    background:conic-gradient(
-    from 0deg,
+    background:linear-gradient(
+    135deg,
     #ff0080,
     #7928ca,
     #00d4ff,
@@ -113,13 +113,15 @@ h2{
 }
 
 @keyframes borda{
-    from{
-        transform:rotate(0deg);
+    0%{
+        background-position:0% 50%;
     }
-    to{
-        transform:rotate(360deg);
+
+    100%{
+        background-position:300% 50%;
     }
 }
+    
 button{
     width:120px;
     height:55px;
