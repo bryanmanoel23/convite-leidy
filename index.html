@@ -9,21 +9,25 @@
 
 <style>
     
+html,
 body{
-    position:relative;
-    font-family: Arial, sans-serif;
+    width:100%;
+    height:100%;
+    margin:0;
+    overflow:hidden;
+}
+
+body{
+    position:fixed;
+    inset:0;
+
+    font-family:Arial,sans-serif;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100dvh;
-    width:100vw;
-    margin:0;
-    overflow:hidden;
 
-    background-image:url('./Leidy.png');
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
+    background:url("./Leidy.png") center center / cover no-repeat;
 }
     
 .caixa{
@@ -190,13 +194,13 @@ function fugir(e){
     btn.style.transform = "none";
     btn.style.zIndex = "9999";
 
-    const margem = 20;
+    const margem = 40;
 
-    const largura = window.innerWidth - btn.offsetWidth - margem;
-    const altura = window.innerHeight - btn.offsetHeight - margem;
+    const largura = document.documentElement.clientWidth - btn.offsetWidth - margem;
+    const altura = document.documentElement.clientHeight - btn.offsetHeight - margem;
 
-    const x = Math.random() * largura;
-    const y = Math.random() * altura;
+    const x = margem + Math.random() * (largura - margem);
+    const y = margem + Math.random() * (altura - margem);
 
     btn.style.left = x + "px";
     btn.style.top = y + "px";
